@@ -63,9 +63,8 @@ Here are local states for this component which will help to manage data and rend
       -if name is valid then i clear error message accordingly 
   
   */
-  const validateName = async (e) => {
-        e.preventDefault();
-        const valid = await isNameValid(e.target.value);
+  const validateName = async (name) => {
+        const valid = await isNameValid(name);
         setIsValid(valid);
         if(!isValid){
           setErrorMessage("this nane has been already taken");
@@ -85,7 +84,7 @@ Here are local states for this component which will help to manage data and rend
             type="text"
             id="name"
             value={name}
-            onKeyUp= {(e) => validateName(e)}
+            onKeyUp= {(e) => validateName(e.target.value)}
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter name"
           />
